@@ -1,13 +1,7 @@
 package com.github.cstroe.swagger.docgen.task;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 import com.github.kongchen.swagger.docgen.mavenplugin.ApiSource;
-import com.wordnik.swagger.annotations.Api;
-import org.apache.tools.ant.BuildException;
-import org.reflections.Reflections;
+import org.apache.tools.ant.Project;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,52 +10,58 @@ import org.reflections.Reflections;
  */
 public class AntApiSource extends ApiSource {
 
+    private final Project project;
+
+    public AntApiSource(Project project) {
+        this.project = project;
+    }
+
     public AntApiSourceInfo createApiInfo() {
-        return new AntApiSourceInfo();
+        return new AntApiSourceInfo(project);
     }
 
     public WriteBack createLocations() {
-        return new WriteBack(this, "locations");
+        return new WriteBack(project, this, "locations");
     }
 
     public WriteBack createApiVersion() {
-        return new WriteBack(this, "apiVersion");
+        return new WriteBack(project, this, "apiVersion");
     }
 
     public WriteBack createBasePath() {
-        return new WriteBack(this, "basePath");
+        return new WriteBack(project, this, "basePath");
     }
 
     public WriteBack createOverridingModels() {
-        return new WriteBack(this, "overridingModels");
+        return new WriteBack(project, this, "overridingModels");
     }
 
     public WriteBack createSwaggerInternalFilter() {
-        return new WriteBack(this, "swaggerInternalFilter");
+        return new WriteBack(project, this, "swaggerInternalFilter");
     }
 
     public WriteBack createOutputTemplate() {
-        return new WriteBack(this, "outputTemplate");
+        return new WriteBack(project, this, "outputTemplate");
     }
 
     public WriteBack createMustacheFileRoot() {
-        return new WriteBack(this, "mustacheFileRoot");
+        return new WriteBack(project, this, "mustacheFileRoot");
     }
 
     public WriteBack createOutputPath() {
-        return new WriteBack(this, "outputPath");
+        return new WriteBack(project, this, "outputPath");
     }
 
     public WriteBack createSwaggerDirectory() {
-        return new WriteBack(this, "swaggerDirectory");
+        return new WriteBack(project, this, "swaggerDirectory");
     }
 
     public WriteBack createSwaggerUIDocBasePath() {
-        return new WriteBack(this, "swaggerUIDocBasePath");
+        return new WriteBack(project, this, "swaggerUIDocBasePath");
     }
 
     public WriteBack createUseOutputFlatStructure() {
-        return new WriteBack(this, "useOutputFlatStructure");
+        return new WriteBack(project, this, "useOutputFlatStructure");
     }
 
     @Override

@@ -54,7 +54,7 @@ public class SwaggerTask extends MatchingTask {
     }
 
     public AntApiSources createApiSources() {
-        this.sources = new AntApiSources();
+        this.sources = new AntApiSources(getProject());
         return this.sources;
     }
 }
