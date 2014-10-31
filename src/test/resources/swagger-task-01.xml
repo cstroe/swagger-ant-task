@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SwaggerAntTask" basedir="." default="swaggertask">
+
+    <path id="swagger.classpath">
+        <fileset dir="${java.home}">
+            <include name="lib/tools.jar"/>
+        </fileset>
+    </path>
+
+    <target name="swaggertask.init"
+            description="Define the swagger task.">
+        <taskdef name="swagger"
+                 classname="com.github.cstroe.swagger.docgen.SwaggerTask"
+                 classpathref="swagger.classpath"/>
+    </target>
+
+
+    <target name="swaggertask.first"
+            description="A typical swagger task definition."
+            depends="swaggertask.init">
+        <swagger>
+            <apiSources>
+                <apiSource>
+                    <!--Required parameters BEGIN-->
+                    <locations>com.github.kongchen.swagger.sample.wordnik.resource</locations>
+                    <apiVersion>v1</apiVersion>
+                    <basePath>http://petstore.swagger.wordnik.com/api</basePath>
+                    <!--Required parameters END-->
+                </apiSource>
+            </apiSources>
+        </swagger>
+    </target>
+
+    <target name="swaggertask"
+            description="All tests."
+            depends="swaggertask.first"/>
+</project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SwaggerAntTask" basedir="." default="swaggertask">
+
+    <path id="swagger.classpath">
+        <fileset dir="${java.home}">
+            <include name="lib/tools.jar"/>
+        </fileset>
+    </path>
+
+    <target name="swaggertask.init"
+            description="Define the swagger task.">
+        <taskdef name="swagger"
+                 classname="com.github.cstroe.swagger.docgen.SwaggerTask"
+                 classpathref="swagger.classpath"/>
+    </target>
+
+
+    <target name="swaggertask.first"
+            description="A typical swagger task definition."
+            depends="swaggertask.init">
+        <swagger>
+            <apiSources>
+                <apiSource>
+                    <!--Required parameters BEGIN-->
+                    <locations>com.github.kongchen.swagger.sample.wordnik.resource</locations>
+                    <apiVersion>v1</apiVersion>
+                    <basePath>http://petstore.swagger.wordnik.com/api</basePath>
+                    <!--Required parameters END-->
+
+                    <!--Optional parameters BEGIN-->
+                    <!---General parameters BEGIN-->
+                    <apiInfo>
+                        <title>Swagger Maven Plugin Sample</title>
+                        <description>This is a sample for swagger-maven-plugin</description>
+                        <termsOfServiceUrl>http://www.github.com/kongchen/swagger-maven-plugin</termsOfServiceUrl>
+                        <contact>kongchen#gmail$com</contact>
+                        <license>Apache 2.0</license>
+                        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+                    </apiInfo>
+                    <overridingModels>/swagger-overriding-models.json</overridingModels>
+                    <swaggerInternalFilter>com.wordnik.swagger.config.DefaultSpecFilter</swaggerInternalFilter>
+                    <!---General parameters END-->
+
+                    <!---Document generation parameters BEGIN-->
+                    <outputTemplate>templates/strapdown.html.mustache</outputTemplate>
+                    <mustacheFileRoot>${basedir}/templates/</mustacheFileRoot>
+                    <outputPath>${basedir}/generated/document.html</outputPath>
+                    <!---Document generation parameters END-->
+
+                    <!---Swagger JSON parameters BEGIN-->
+                    <swaggerDirectory>generated/swagger-ui</swaggerDirectory>
+                    <swaggerUIDocBasePath>http://www.wordnik.com/restapi/doc</swaggerUIDocBasePath>
+                    <useOutputFlatStructure>false</useOutputFlatStructure>
+                    <!---Swagger JSON parameters END-->
+                </apiSource>
+            </apiSources>
+        </swagger>
+    </target>
+
+    <target name="swaggertask"
+            description="All tests."
+            depends="swaggertask.first"/>
+</project>
