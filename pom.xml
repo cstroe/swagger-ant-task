@@ -39,13 +39,6 @@
       </extensions>
     </build>
 
-    <distributionManagement>
-      <repository>
-        <id>BSG.maven</id>
-        <url>sftp://maven.cs1cloud.internal/maven/m2</url>
-      </repository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>com.github.kongchen</groupId>
