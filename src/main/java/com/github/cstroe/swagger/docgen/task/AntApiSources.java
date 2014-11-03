@@ -6,9 +6,6 @@ import org.apache.tools.ant.Project;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by cosmin on 10/31/14.
- */
 public class AntApiSources {
     private final Project project;
     private List<ApiSource> apiSources = new LinkedList<>();
@@ -17,6 +14,7 @@ public class AntApiSources {
         this.project = project;
     }
 
+    @SuppressWarnings("unused")
     public AntApiSource createApiSource() {
         AntApiSource source = new AntApiSource(project);
         apiSources.add(source);

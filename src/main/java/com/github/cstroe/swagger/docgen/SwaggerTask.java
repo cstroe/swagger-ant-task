@@ -6,15 +6,12 @@ import com.github.kongchen.swagger.docgen.mavenplugin.ApiDocumentMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.taskdefs.MatchingTask;
+import org.apache.tools.ant.Task;
 
 /**
  * Wraps an {@link com.github.kongchen.swagger.docgen.mavenplugin.ApiDocumentMojo}.
  */
-public class SwaggerTask extends MatchingTask {
-
-    private boolean verbose = false;
-    private boolean debug = false;
+public class SwaggerTask extends Task {
 
     private AntApiSources sources;
 
@@ -38,21 +35,7 @@ public class SwaggerTask extends MatchingTask {
         }
     }
 
-    public boolean getVerbose() {
-        return verbose;
-    }
-    public void setVerbose(boolean verbose) {
-        this.verbose = verbose;
-    }
-
-    public boolean getDebug() {
-        return debug;
-    }
-
-    public void setDebug(boolean debug) {
-        this.debug = debug;
-    }
-
+    @SuppressWarnings("unused")
     public AntApiSources createApiSources() {
         this.sources = new AntApiSources(getProject());
         return this.sources;
