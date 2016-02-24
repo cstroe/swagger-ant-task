@@ -94,6 +94,53 @@ public class AntApiSource extends ApiSource {
     }
 
     @SuppressWarnings("unused")
+    public WriteBack createAttachSwaggerArtifact() {
+        return new WriteBack(project, this, "attachSwaggerArtifact");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createModelSubstitute() {
+        return new WriteBack(project, this, "modelSubstitute");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createApiSortComparator() {
+        return new WriteBack(project, this, "apiSortComparator");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createSwaggerApiReader() {
+        return new WriteBack(project, this, "swaggerApiReader");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createUseJAXBAnnotationProcessor() {
+        return new WriteBack(project, this, "useJAXBAnnotationProcessor");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createSwaggerSchemaConverter() {
+        return new WriteBack(project, this, "swaggerSchemaConverter");
+    }
+    
+    // typesToSkip
+    
+    // apiModelPropertyAccessExclusions
+
+    @SuppressWarnings("unused")
+    public WriteBack createJsonExampleValues() {
+        return new WriteBack(project, this, "jsonExampleValues");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createDescriptionFile() {
+        return new WriteBack(project, this, "descriptionFile");
+    }
+    
+    // modelConverters
+    
+
+    @SuppressWarnings("unused")
     public AntSecurityDefinitions createSecurityDefinitions() {
         AntSecurityDefinitions antSecurityDefinitions = new AntSecurityDefinitions(project);
         setSecurityDefinitions(antSecurityDefinitions);
