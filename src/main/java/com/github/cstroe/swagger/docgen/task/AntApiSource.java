@@ -12,8 +12,10 @@ public class AntApiSource extends ApiSource {
     }
 
     @SuppressWarnings("unused")
-    public AntApiSourceInfo createApiInfo() {
-        return new AntApiSourceInfo(project);
+    public AntInfo createInfo() {
+        AntInfo antInfo = new AntInfo(project);
+        setInfo(antInfo);
+        return antInfo;
     }
 
     @SuppressWarnings("unused")
@@ -71,11 +73,36 @@ public class AntApiSource extends ApiSource {
         return new WriteBack(project, this, "useOutputFlatStructure");
     }
 
+    @SuppressWarnings("unused")
+    public WriteBack createSpringmvc() {
+        return new WriteBack(project, this, "springmvc");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createSchemes() {
+        return new WriteBack(project, this, "schemes");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createHost() {
+        return new WriteBack(project, this, "host");
+    }
+
+    @SuppressWarnings("unused")
+    public WriteBack createTemplatePath() {
+        return new WriteBack(project, this, "templatePath");
+    }
+
+    @SuppressWarnings("unused")
+    public AntSecurityDefinitions createSecurityDefinitions() {
+        AntSecurityDefinitions antSecurityDefinitions = new AntSecurityDefinitions(project);
+        setSecurityDefinitions(antSecurityDefinitions);
+        return antSecurityDefinitions;
+    }
+
     @Override
     public String toString() {
         return "locations  = " + getLocations() + "\n" +
-               "apiInfo    = " + getApiInfo() + "\n" +
-               "apiVersion = " + getApiVersion() + "\n" +
-               "basePath   = " + getBasePath();
+                "basePath   = " + getBasePath();
     }
 }
