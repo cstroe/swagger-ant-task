@@ -45,8 +45,8 @@
                     1) classpath e.g: "classpath:/markdown.hbs", "classpath:/templates/hello.html"
                     2) file e.g: "${basedir}/src/main/resources/markdown.hbs",
                         "${basedir}/src/main/resources/template/hello.html" -->
-                    <templatePath>${basedir}/templates/strapdown.html.hbs</templatePath>
-                    <outputPath>${basedir}/generated/document.html</outputPath>
+                    <templatePath>${basedir}/src/test/resources/templates/strapdown.html.hbs</templatePath>
+                    <outputPath>${basedir}/src/test/resources/generated/document.html</outputPath>
                     <swaggerDirectory>generated/swagger-ui</swaggerDirectory>
                     <securityDefinitions>
                         <securityDefinition>
